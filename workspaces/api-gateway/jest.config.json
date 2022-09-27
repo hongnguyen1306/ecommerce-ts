@@ -1,0 +1,21 @@
+{
+  "moduleNameMapper": {
+    "^db(.*)$": "<rootDir>/db$1",
+    "^api(.*)$": "<rootDir>/api$1",
+    "^app.module$": "<rootDir>/app.module",
+    "^commons(.*)$": "<rootDir>/commons$1",
+    "^services(.*)$": "<rootDir>/services$1",
+    "^__tests__(.*)$": "<rootDir>/__tests__$1",
+    "^app.controller$": "<rootDir>/app.controller"
+  },
+  "maxWorkers": 1,
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "src",
+  "testRegex": ".*\\.spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverageFrom": ["**/*.(t|j)s"],
+  "coverageDirectory": "../coverage",
+  "testEnvironment": "node"
+}
