@@ -21,7 +21,5 @@
     "strictNullChecks": false,
     "target": "esnext"
   },
-  "include": [
-    "./src"
-  ]
+  "include": ["./src"]
 }

@@ -1,21 +1,31 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from '../app.module';
+import type { INestApplication } from '@nestjs/common';
+
+import { AppController } from 'app.controller';
+import { createTestingModule } from '__tests__/utils';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile();
-
-    app = moduleFixture.createNestApplication();
+  beforeAll(async () => {
+    const { app: appInstance } = await createTestingModule({
+      controllers: [AppController],
+      useOrm: false,
+    });
+    app = appInstance;
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer()).get('/').expect(200).expect('OK');
+  afterAll(async () => {
+    await app.close();
+  });
+
+  describe('GET /health', () => {
+    it('returns ok', () => {
+      return request(app.getHttpServer())
+        .get('/health')
+        .expect(200)
+        .expect('OK');
+    });
   });
 });

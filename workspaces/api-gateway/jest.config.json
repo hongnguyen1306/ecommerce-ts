@@ -1,12 +1,13 @@
 {
   "moduleNameMapper": {
-    "^db(.*)$": "<rootDir>/db$1",
+    "^database(.*)$": "<rootDir>/database$1",
     "^api(.*)$": "<rootDir>/api$1",
     "^app.module$": "<rootDir>/app.module",
     "^commons(.*)$": "<rootDir>/commons$1",
     "^services(.*)$": "<rootDir>/services$1",
     "^__tests__(.*)$": "<rootDir>/__tests__$1",
-    "^app.controller$": "<rootDir>/app.controller"
+    "^app.controller$": "<rootDir>/app.controller",
+    "^typeOrm.config$": "<rootDir>/typeOrm.config"
   },
   "maxWorkers": 1,
   "moduleFileExtensions": ["js", "json", "ts"],
