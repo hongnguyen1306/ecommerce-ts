@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+
 import type { DataSourceOptions } from 'typeorm';
 import type { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
@@ -13,7 +14,8 @@ export function createTypeOrmOptions(): TypeOrmModuleOptions {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     namingStrategy: new SnakeNamingStrategy(),
-    entities: [`${__dirname}/database/models/*{.ts,.js}`],
+    entities: [`${__dirname}/src/database/models/*{.ts,.js}`],
+    autoLoadEntities: true,
     synchronize: false,
     migrations: [`${__dirname}/database/migrations/*{.ts,.js}`],
   };

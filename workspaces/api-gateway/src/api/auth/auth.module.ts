@@ -6,10 +6,12 @@ import type { RouteTree } from '@nestjs/core';
 
 import { LocalStrategy } from 'api/auth/local.strategy';
 import { AuthProfile } from 'api/auth/auth.profile';
-import { AuthService } from 'api/auth/auth.service';
 import { JwtStrategy } from 'api/auth/jwt.strategy';
 import { AuthController } from 'api/auth/auth.controller';
 import { User } from 'database/models/user.entity';
+import { SignUpService } from 'api/auth/services/SignUpService';
+import { SignInService } from 'api/auth/services/SignInService';
+import { GetProfileService } from 'api/auth/services/GetProfileService';
 
 @Module({
   imports: [
@@ -22,7 +24,14 @@ import { User } from 'database/models/user.entity';
       },
     }),
   ],
-  providers: [AuthProfile, LocalStrategy, JwtStrategy, AuthService],
+  providers: [
+    AuthProfile,
+    LocalStrategy,
+    JwtStrategy,
+    SignUpService,
+    SignInService,
+    GetProfileService,
+  ],
   controllers: [AuthController],
 })
 export class AuthModule {}

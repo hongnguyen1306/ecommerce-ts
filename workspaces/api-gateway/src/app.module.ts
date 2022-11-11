@@ -8,8 +8,10 @@ import type { Routes } from '@nestjs/core';
 import { createTypeOrmOptions } from 'typeOrm.config';
 import { AppController } from 'app.controller';
 import { AuthModule, authRoutes } from 'api/auth/auth.module';
+import { AdminModule, adminRoutes } from 'api/admin/admin.module';
+import { V1Module, v1Routes } from 'api/v1/v1.module';
 
-const routes: Routes = [authRoutes];
+const routes: Routes = [authRoutes, adminRoutes, v1Routes];
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ const routes: Routes = [authRoutes];
       strategyInitializer: classes(),
     }),
     AuthModule,
+    AdminModule,
+    V1Module,
   ],
   controllers: [AppController],
 })

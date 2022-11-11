@@ -1,4 +1,4 @@
-import type { User } from 'database/models/user.entity';
+import { roles, User } from 'database/models/user.entity';
 
 export const userData: User = {
   id: '1',
@@ -7,4 +7,5 @@ export const userData: User = {
   email: null,
   createdAt: null,
   updatedAt: null,
+  role: roles.admin,
 };

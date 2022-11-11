@@ -1,18 +1,17 @@
+import { Column, Entity } from 'typeorm';
 import { AutoMap } from '@automapper/classes';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+
+import { BaseModel } from 'database/models/BaseModel';
+
+export const roles = {
+  user: 'user',
+  admin: 'admin',
+} as const;
+
+export type TRole = keyof typeof roles;
 
 @Entity({ name: 'users' })
-export class User {
-  @AutoMap()
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class User extends BaseModel {
   @AutoMap()
   @Column({ unique: true })
   username: string;
@@ -24,9 +23,11 @@ export class User {
   @Column({ nullable: true, unique: true })
   email: string;
 
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @AutoMap()
+  @Column({
+    type: 'enum',
+    enum: roles,
+    default: roles.user,
+  })
+  role: TRole;
 }

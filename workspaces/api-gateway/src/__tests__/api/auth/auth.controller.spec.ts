@@ -11,7 +11,7 @@ import { userData } from '__tests__/seeds/user';
 import { createTestingModule } from '__tests__/utils';
 import { AuthVM, ProfileVM, SignInVM } from 'api/auth/auth.vm';
 import { AuthModule } from 'api/auth/auth.module';
-import { AuthService } from 'api/auth/auth.service';
+import { SignUpService } from 'api/auth/services/SignUpService';
 import type { AuthCredentialsDto } from 'api/auth/dto/auth-credential.dto';
 import type { IAuthProps } from 'api/auth/auth.interface';
 
@@ -21,7 +21,7 @@ describe('AuthController (e2e)', () => {
   let dataSource: DataSource;
   let mapper: Mapper;
   let jwtService: JwtService;
-  let authService: AuthService;
+  let signUpService: SignUpService;
   let userAuth: IAuthProps;
 
   const userDto: AuthCredentialsDto = {
@@ -34,10 +34,12 @@ describe('AuthController (e2e)', () => {
       imports: [AuthModule],
       entities: [User],
     });
+
     userRepository = module.get('UserRepository');
     dataSource = module.get(DataSource);
     jwtService = module.get(JwtService);
-    authService = module.get(AuthService);
+    signUpService = module.get(SignUpService);
+
     mapper = module.get<Mapper>('automapper:nestjs:default');
 
     app = appInstance;
@@ -46,7 +48,7 @@ describe('AuthController (e2e)', () => {
   });
 
   beforeEach(async () => {
-    userAuth = await authService.signUp(userDto);
+    userAuth = await signUpService.exec(userDto);
   });
 
   afterEach(async () => {
@@ -65,6 +67,7 @@ describe('AuthController (e2e)', () => {
           username: 'Signup',
           password: 'Signup1235',
         };
+
         jest
           .spyOn(jwtService, 'sign')
           .mockImplementationOnce(() => 'fakeToken');
@@ -135,6 +138,7 @@ describe('AuthController (e2e)', () => {
     describe('with valid token', () => {
       it('returns user profile ', async () => {
         const { profile, authToken } = userAuth;
+
         const resultMapping = await mapper.mapAsync(profile, User, ProfileVM);
 
         return request(app.getHttpServer())
@@ -150,11 +154,10 @@ describe('AuthController (e2e)', () => {
 
     describe('with expired token', () => {
       it('raises unauthorized error', () => {
-        const fakeToken = 'fakeToken123';
         return request(app.getHttpServer())
           .get('/api/auth/profile')
           .set('Accept', 'application/json')
-          .set('Authorization', `Bearer ${fakeToken}`)
+          .set('Authorization', `Bearer fakeToken123`)
           .expect(HttpStatus.UNAUTHORIZED);
       });
     });

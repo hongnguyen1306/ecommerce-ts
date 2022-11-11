@@ -12,14 +12,19 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { User } from 'database/models/user.entity';
 import { AuthVM, ProfileVM, SignInVM } from 'api/auth/auth.vm';
-import { AuthService } from 'api/auth/auth.service';
+import { SignInService } from 'api/auth/services/SignInService';
+import { SignUpService } from 'api/auth/services/SignUpService';
+
 import { AuthCredentialsDto } from 'api/auth/dto/auth-credential.dto';
 import type { IRequest } from 'interface';
 import type { IAuthProps } from 'api/auth/auth.interface';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly signUpService: SignUpService,
+    private readonly signInService: SignInService,
+  ) {}
 
   @Post('signup')
   @UseInterceptors(MapInterceptor(SignInVM, AuthVM))
@@ -27,14 +32,14 @@ export class AuthController {
     @Body()
     authCredentialsDto: AuthCredentialsDto,
   ): Promise<IAuthProps> {
-    return this.authService.signUp(authCredentialsDto);
+    return this.signUpService.exec(authCredentialsDto);
   }
 
   @UseGuards(AuthGuard('local'))
   @Post('signin')
   @UseInterceptors(MapInterceptor(SignInVM, AuthVM))
   signIn(@Request() req: IRequest): IAuthProps {
-    return this.authService.signIn(req.user);
+    return this.signInService.exec(req.user);
   }
 
   @UseGuards(AuthGuard('jwt'))

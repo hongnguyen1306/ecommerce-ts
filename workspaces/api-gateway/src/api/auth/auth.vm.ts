@@ -1,4 +1,5 @@
 import { AutoMap } from '@automapper/classes';
+
 import { User } from 'database/models/user.entity';
 
 export class ProfileVM {

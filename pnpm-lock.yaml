@@ -40,6 +40,7 @@ importers:
       '@nestjs/config': ^2.2.0
       '@nestjs/core': ^9.1.4
       '@nestjs/jwt': ^9.0.0
+      '@nestjs/mapped-types': ^1.2.0
       '@nestjs/passport': ^9.0.0
       '@nestjs/platform-express': ^9.1.4
       '@nestjs/schematics': ^9.0.0
@@ -65,6 +66,7 @@ importers:
       reflect-metadata: ^0.1.13
       rimraf: ^3.0.2
       rxjs: ^7.2.0
+      slugify: ^1.6.5
       source-map-support: ^0.5.20
       supertest: ^6.3.0
       ts-jest: 29.0.3
@@ -82,6 +84,7 @@ importers:
       '@nestjs/config': 2.2.0_6fl4rox5ofo3yz2h7ukpny327a
       '@nestjs/core': 9.1.4_os3bpar6zvfsuh6rrdsifrg6hi
       '@nestjs/jwt': 9.0.0_@nestjs+common@9.1.4
+      '@nestjs/mapped-types': 1.2.0_dds7u4gk7gkqdcumnydaxqxvq4
       '@nestjs/passport': 9.0.0_chzdcermfwnb3dok7x4r5rswj4
       '@nestjs/platform-express': 9.1.4_osbqhc5bxkxr7p4xaw5wgzf7bi
       '@nestjs/typeorm': 9.0.1_u6s7yl4kxjrfar7vjj57aweove
@@ -96,6 +99,7 @@ importers:
       reflect-metadata: 0.1.13
       rimraf: 3.0.2
       rxjs: 7.5.7
+      slugify: 1.6.5
       typeorm: 0.3.10_pg@8.8.0+ts-node@10.9.1
       typeorm-naming-strategies: 4.1.0_typeorm@0.3.10
     devDependencies:
@@ -1057,6 +1061,25 @@ packages:
       '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
       '@types/jsonwebtoken': 8.5.8
       jsonwebtoken: 8.5.1
+    dev: false
+
+  /@nestjs/mapped-types/1.2.0_dds7u4gk7gkqdcumnydaxqxvq4:
+    resolution: {integrity: sha512-NTFwPZkQWsArQH8QSyFWGZvJ08gR+R4TofglqZoihn/vU+ktHEJjMqsIsADwb7XD97DhiD+TVv5ac+jG33BHrg==}
+    peerDependencies:
+      '@nestjs/common': ^7.0.8 || ^8.0.0 || ^9.0.0
+      class-transformer: ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0
+      class-validator: ^0.11.1 || ^0.12.0 || ^0.13.0
+      reflect-metadata: ^0.1.12
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      '@nestjs/common': 9.1.4_x6yqyveuahcdef4z4mxykmuv6a
+      class-transformer: 0.5.1
+      class-validator: 0.13.2
+      reflect-metadata: 0.1.13
     dev: false
 
   /@nestjs/passport/9.0.0_chzdcermfwnb3dok7x4r5rswj4:
@@ -5113,6 +5136,11 @@ packages:
       ansi-styles: 6.2.1
       is-fullwidth-code-point: 4.0.0
     dev: true
+
+  /slugify/1.6.5:
+    resolution: {integrity: sha512-8mo9bslnBO3tr5PEVFzMPIWwWnipGS0xVbYf65zxDqfNwmzYn1LpiKNrR6DlClusuvo+hDHd1zKpmfAe83NQSQ==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /source-map-support/0.5.13:
     resolution: {integrity: sha512-SHSKFHadjVA5oR4PPqhtAVdcBWwRYVd6g6cAXnIbRiIwc2EhPrTuKUBdSLvlEKyIP3GCf89fltvcZiP9MMFA1w==}
