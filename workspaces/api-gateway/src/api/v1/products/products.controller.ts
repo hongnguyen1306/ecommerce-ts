@@ -9,7 +9,7 @@ import {
   ProductsPagyMetadataVM,
   ProductsPagyVM,
   ProductVM,
-} from 'api/v1/products/product.vm';
+} from 'api/v1/products/products.vm';
 
 @Controller('products')
 export class ProductsController {

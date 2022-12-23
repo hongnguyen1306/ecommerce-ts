@@ -19,7 +19,7 @@ import { CheckProductExistedService } from 'api/admin/products/services/CheckPro
 import { CreateProductCategoryService } from 'api/admin/products/services/CreateProductCategoryService';
 import { GetRelatedCategoriesService } from 'api/admin/categories/services/GetRelatedCategoriesService';
 import { GetCategoryByKeyService } from 'api/admin/categories/services/GetCategoryByKeyService';
-import { ProductsCategoriesVM } from 'api/admin/products/product.vm';
+import { ProductsCategoriesVM } from 'api/admin/products/products.vm';
 import {
   CategoriesPagyMetadataVM,
   CategoriesPagyVM,

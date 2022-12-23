@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import type { RouteTree } from '@nestjs/core';
 
+import { ProductsModule } from 'api/v1/products/products.module';
 import { CategoriesModule } from 'api/v1/categories/categories.module';
-import { ProductsModule } from 'api/v1/products/product.module';
 import { V1Profile } from 'api/v1/v1.profile';
 
 @Module({

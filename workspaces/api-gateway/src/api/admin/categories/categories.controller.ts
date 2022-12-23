@@ -23,7 +23,7 @@ import {
   CreateCategoryDto,
   UpdateCategoryDto,
 } from 'api/admin/categories/categories.dto';
-import { ProductsCategoriesVM } from 'api/admin/products/product.vm';
+import { ProductsCategoriesVM } from 'api/admin/products/products.vm';
 import { Category } from 'database/models/category.entity';
 import { ProductsCategories } from 'database/models/productsCategories.entity';
 import { CreateCategoryService } from 'api/admin/categories/services/CreateCategoryService';

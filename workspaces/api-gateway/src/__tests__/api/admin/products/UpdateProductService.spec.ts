@@ -2,8 +2,8 @@ import { DataSource } from 'typeorm';
 
 import { Category } from 'database/models/category.entity';
 import { Product } from 'database/models/product.entity';
-import { ProductsModule } from 'api/admin/products/product.module';
-import { createTestingModule, mockDate } from '__tests__/utils';
+import { ProductsModule } from 'api/admin/products/products.module';
+import { createTestingModule } from '__tests__/utils';
 import { categoriesSample } from '__tests__/seeds/categories';
 import { CreateCategoryService } from 'api/admin/categories/services/CreateCategoryService';
 import { CreateProductService } from 'api/admin/products/services/CreateProductService';
@@ -71,8 +71,8 @@ describe('ProductsService', () => {
           id: product.id,
           name: 'update',
           slug: 'update',
-          createdAt: mockDate,
-          updatedAt: mockDate,
+          createdAt: new Date(),
+          updatedAt: new Date(),
           deletedAt: null,
         };
 

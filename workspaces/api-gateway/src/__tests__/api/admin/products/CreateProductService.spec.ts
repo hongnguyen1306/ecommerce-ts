@@ -4,14 +4,14 @@ import type { Repository } from 'typeorm';
 import { Category } from 'database/models/category.entity';
 import { Product } from 'database/models/product.entity';
 import { ProductsCategories } from 'database/models/productsCategories.entity';
-import { ProductsModule } from 'api/admin/products/product.module';
+import { ProductsModule } from 'api/admin/products/products.module';
 import { createTestingModule } from '__tests__/utils';
 import { categoriesSample } from '__tests__/seeds/categories';
 import { productSample } from '__tests__/seeds/product';
 import { CreateProductService } from 'api/admin/products/services/CreateProductService';
 import { CreateCategoryService } from 'api/admin/categories/services/CreateCategoryService';
-import { CreateCategoryDto } from 'api/admin/categories/categories.dto';
 import { CheckCategoryExistedService } from 'api/admin/categories/services/CheckCategoryExistedService';
+import type { CreateCategoryDto } from 'api/admin/categories/categories.dto';
 import type { CreateProductDto } from 'api/admin/products/products.dto';
 
 describe('ProductsService', () => {
@@ -21,7 +21,6 @@ describe('ProductsService', () => {
   let dataSource: DataSource;
   let category: Category;
   let product: Product;
-  let mockDate: Date;
 
   const createProductDto: CreateProductDto = {
     categoryId: '1',
@@ -34,7 +33,7 @@ describe('ProductsService', () => {
   };
 
   beforeAll(async () => {
-    const { module, mockDate: dateInstance } = await createTestingModule({
+    const { module } = await createTestingModule({
       imports: [ProductsModule],
       entities: [Category, Product, ProductsCategories],
       providers: [CreateCategoryService, CheckCategoryExistedService],
@@ -45,8 +44,6 @@ describe('ProductsService', () => {
     dataSource = module.get(DataSource);
     createCategoryService = module.get(CreateCategoryService);
     createProductService = module.get(CreateProductService);
-
-    mockDate = dateInstance;
   });
 
   beforeEach(async () => {
@@ -81,6 +78,7 @@ describe('ProductsService', () => {
     describe('with existed slug', () => {
       it('should return with timestamp slug', async () => {
         const newProduct = await createProductService.exec(createProductDto);
+        const mockDate = new Date();
 
         newProduct.id = product.id;
         product.slug = `${product.slug}-${mockDate.getTime()}`;

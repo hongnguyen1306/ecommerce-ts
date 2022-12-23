@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from 'database/models/product.entity';
 import { Category } from 'database/models/category.entity';
 import { ProductsCategories } from 'database/models/productsCategories.entity';
-import { ProductsController } from 'api/admin/products/product.controller';
+import { ProductsController } from 'api/admin/products/products.controller';
 import { GetListProductsService } from 'api/admin/products/services/GetListProductsService';
 import { CreateProductService } from 'api/admin/products/services/CreateProductService';
 import { UpdateProductService } from 'api/admin/products/services/UpdateProductService';

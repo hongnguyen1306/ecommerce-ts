@@ -16,7 +16,6 @@ describe('CategoriesService', () => {
   let updateCategoryService: UpdateCategoryService;
   let createCategoryService: CreateCategoryService;
   let category: Category;
-  let mockDate: Date;
 
   const createCategoryDto: CreateCategoryDto = {
     name: 'electronics',
@@ -24,14 +23,13 @@ describe('CategoriesService', () => {
   };
 
   beforeAll(async () => {
-    const { module, mockDate: dateInstance } = await createTestingModule({
+    const { module } = await createTestingModule({
       imports: [CategoriesModule],
       entities: [Category, Product, ProductsCategories],
       providers: [CheckProductExistedService, GetCategoryByKeyService],
       fakeTime: true,
     });
 
-    mockDate = dateInstance;
     dataSource = module.get(DataSource);
     updateCategoryService = module.get(UpdateCategoryService);
     createCategoryService = module.get(CreateCategoryService);
@@ -65,8 +63,8 @@ describe('CategoriesService', () => {
           name: 'update',
           slug: 'update',
           level: 0,
-          updatedAt: mockDate,
-          createdAt: mockDate,
+          updatedAt: new Date(),
+          createdAt: new Date(),
         };
 
         expect(updateCategory).toEqual(result);

@@ -6,7 +6,7 @@ import type { Repository } from 'typeorm';
 import type { INestApplication } from '@nestjs/common';
 import type { Mapper } from '@automapper/core';
 
-import { ProductsModule } from 'api/admin/products/product.module';
+import { ProductsModule } from 'api/admin/products/products.module';
 import { createTestingModule, createUser } from '__tests__/utils';
 import { Category } from 'database/models/category.entity';
 import { Product } from 'database/models/product.entity';
@@ -22,7 +22,7 @@ import {
   ProductsPagyMetadataVM,
   ProductsPagyVM,
   ProductVM,
-} from 'api/admin/products/product.vm';
+} from 'api/admin/products/products.vm';
 import { User } from 'database/models/user.entity';
 import { SignUpService } from 'api/auth/services/SignUpService';
 import { JwtStrategy } from 'api/auth/jwt.strategy';
