@@ -1,5 +1,5 @@
 import * as request from 'supertest';
-import { Mapper } from '@automapper/core';
+import type { Mapper } from '@automapper/core';
 import type { INestApplication } from '@nestjs/common';
 
 import { CreateCategoryService } from 'api/admin/categories/services/CreateCategoryService';
@@ -8,7 +8,7 @@ import {
   ProductsPagyMetadataVM,
   ProductsPagyVM,
   ProductVM,
-} from 'api/v1/products/product.vm';
+} from 'api/v1/products/products.vm';
 import { Category } from 'database/models/category.entity';
 import { Product } from 'database/models/product.entity';
 import { ProductsCategories } from 'database/models/productsCategories.entity';
@@ -22,7 +22,7 @@ import { CreateProductCategoryService } from 'api/admin/products/services/Create
 import { GetCategoryByKeyService } from 'api/admin/categories/services/GetCategoryByKeyService';
 import { GetRelatedCategoriesService } from 'api/admin/categories/services/GetRelatedCategoriesService';
 import { V1Profile } from 'api/v1/v1.profile';
-import { ProductsController } from 'api/v1/products/product.controller';
+import { ProductsController } from 'api/v1/products/products.controller';
 import { GetListProductsService } from 'api/v1/products/services/GetListProductsService';
 import { GetProductService } from 'api/v1/products/services/GetProductService';
 

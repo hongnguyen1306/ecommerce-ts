@@ -13,7 +13,7 @@ import { ProductsCategories } from 'database/models/productsCategories.entity';
 import { BaseModel } from 'database/models/BaseModel';
 
 @Entity({ name: 'categories' })
-@Tree('closure-table', { closureTableName: 'categories' })
+@Tree('closure-table')
 export class Category extends BaseModel {
   @AutoMap()
   @Column()

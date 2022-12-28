@@ -24,7 +24,7 @@ import {
   ProductsPagyMetadataVM,
   ProductsPagyVM,
   ProductVM,
-} from 'api/admin/products/product.vm';
+} from 'api/admin/products/products.vm';
 import { Product } from 'database/models/product.entity';
 import { CreateProductService } from 'api/admin/products/services/CreateProductService';
 import { GetListProductsService } from 'api/admin/products/services/GetListProductsService';

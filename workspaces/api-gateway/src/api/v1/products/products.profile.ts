@@ -6,9 +6,9 @@ import {
   ProductsPagyMetadataVM,
   ProductsPagyVM,
   ProductVM,
-} from 'api/v1/products/product.vm';
+} from 'api/v1/products/products.vm';
 
-export const productProfile: MappingProfile = (mapper) => {
+export const productsProfile: MappingProfile = (mapper) => {
   createMap(mapper, Product, ProductVM);
   createMap(mapper, ProductsPagyMetadataVM, ProductsPagyVM);
 };

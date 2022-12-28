@@ -3,7 +3,6 @@ import { DataSource } from 'typeorm';
 import { Category } from 'database/models/category.entity';
 import { Product } from 'database/models/product.entity';
 import { ProductsCategories } from 'database/models/productsCategories.entity';
-import { ProductsModule } from 'api/v1/products/product.module';
 import { createTestingModule } from '__tests__/utils';
 import { categoriesSample } from '__tests__/seeds/categories';
 import { GetListProductsService } from 'api/v1/products/services/GetListProductsService';
@@ -15,6 +14,7 @@ import { CreateProductCategoryService } from 'api/admin/products/services/Create
 import { GetCategoryByKeyService } from 'api/admin/categories/services/GetCategoryByKeyService';
 import { GetRelatedCategoriesService } from 'api/admin/categories/services/GetRelatedCategoriesService';
 import { productSample } from '__tests__/seeds/product';
+import { ProductsModule } from 'api/v1/products/products.module';
 
 describe('ProductsService', () => {
   let createCategoryService: CreateCategoryService;

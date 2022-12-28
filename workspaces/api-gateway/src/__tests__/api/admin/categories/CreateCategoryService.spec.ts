@@ -10,7 +10,6 @@ import { CreateCategoryService } from 'api/admin/categories/services/CreateCateg
 import type { CreateCategoryDto } from 'api/admin/categories/categories.dto';
 
 describe('CategoriesService', () => {
-  let mockDate: Date;
   let dataSource: DataSource;
   let category: Category;
   let categoriesRepository: Repository<Category>;
@@ -22,13 +21,12 @@ describe('CategoriesService', () => {
   };
 
   beforeAll(async () => {
-    const { module, mockDate: dateInstance } = await createTestingModule({
+    const { module } = await createTestingModule({
       imports: [CategoriesModule],
       entities: [Category, Product],
       fakeTime: true,
     });
 
-    mockDate = dateInstance;
     dataSource = module.get(DataSource);
     categoriesRepository = module.get('CategoryRepository');
     createCategoryService = module.get(CreateCategoryService);
@@ -59,6 +57,7 @@ describe('CategoriesService', () => {
     describe('with existed slug', () => {
       it('should return category with timestamp slug', async () => {
         const newCategory = await createCategoryService.exec(createCategoryDto);
+        const mockDate = new Date();
 
         category.slug = `${category.slug}-${mockDate.getTime()}`;
         newCategory.id = category.id;

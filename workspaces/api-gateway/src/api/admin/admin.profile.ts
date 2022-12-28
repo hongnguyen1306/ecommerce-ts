@@ -3,8 +3,8 @@ import { AutomapperProfile, InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
 import type { Mapper } from '@automapper/core';
 
-import { categoryProfile } from 'api/admin/categories/category.profile';
-import { productProfile } from 'api/admin/products/product.profile';
+import { categoriesProfile } from 'api/admin/categories/categories.profile';
+import { productsProfile } from 'api/admin/products/products.profile';
 
 @Injectable()
 export class AdminProfile extends AutomapperProfile {
@@ -14,8 +14,8 @@ export class AdminProfile extends AutomapperProfile {
 
   override get profile() {
     return (mapper: Mapper) => {
-      addProfile(mapper, categoryProfile);
-      addProfile(mapper, productProfile);
+      addProfile(mapper, categoriesProfile);
+      addProfile(mapper, productsProfile);
     };
   }
 }

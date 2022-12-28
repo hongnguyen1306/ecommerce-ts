@@ -3,14 +3,14 @@ import { DataSource } from 'typeorm';
 import { Category } from 'database/models/category.entity';
 import { Product } from 'database/models/product.entity';
 import { ProductsCategories } from 'database/models/productsCategories.entity';
-import { ProductsModule } from 'api/admin/products/product.module';
+import { ProductsModule } from 'api/admin/products/products.module';
 import { createTestingModule } from '__tests__/utils';
 import { categoriesSample } from '__tests__/seeds/categories';
 import { GetListProductsService } from 'api/admin/products/services/GetListProductsService';
 import { CreateProductService } from 'api/admin/products/services/CreateProductService';
 import { CreateCategoryService } from 'api/admin/categories/services/CreateCategoryService';
-import { CreateCategoryDto } from 'api/admin/categories/categories.dto';
 import { CheckCategoryExistedService } from 'api/admin/categories/services/CheckCategoryExistedService';
+import type { CreateCategoryDto } from 'api/admin/categories/categories.dto';
 import type { CreateProductDto } from 'api/admin/products/products.dto';
 
 describe('ProductsService', () => {

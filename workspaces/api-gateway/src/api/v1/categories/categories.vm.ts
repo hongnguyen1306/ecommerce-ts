@@ -8,12 +8,12 @@ export class CategoryVM {
 
   @AutoMap()
   slug: string;
-}
 
-export class CategoryDescendantVM extends CategoryVM {
   @AutoMap(() => [CategoryVM])
   children: CategoryVM[];
 }
+
+export class CategoryDescendantVM extends CategoryVM {}
 
 export class CategoriesPagyMetadataVM {
   @AutoMap(() => [Category])

@@ -9,7 +9,7 @@ import {
 } from 'api/admin/categories/categories.vm';
 import { Category } from 'database/models/category.entity';
 
-export const categoryProfile: MappingProfile = (mapper) => {
+export const categoriesProfile: MappingProfile = (mapper) => {
   createMap(mapper, Category, CategoryVM);
   createMap(mapper, Category, CategoryDescendantVM);
   createMap(mapper, CategoriesPagyMetadataVM, CategoriesPagyVM);
